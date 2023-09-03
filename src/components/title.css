@@ -1,0 +1,17 @@
+*{
+    color:rgb(84, 84, 80)
+}
+
+h1{
+    font-size:larger;
+    margin-bottom: 100px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+p{
+    text-align: center;
+}

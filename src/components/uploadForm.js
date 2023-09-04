@@ -1,11 +1,17 @@
 import React from 'react'
 
-function uploadForm() {
+function UploadForm() {
+
+    const handleChange = (e) =>{
+        let selected = e.target.files[0]
+        
+    }
+
   return (
     <form>
-        <input type='file'></input>
+        <input type='file' onChange={handleChange}></input>
     </form>
   )
 }
 
-export default uploadForm
+export default UploadForm

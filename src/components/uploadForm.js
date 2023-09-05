@@ -13,6 +13,7 @@ function UploadForm() {
         
         if(selected && types.includes(selected.type)) {
            setFile(selected);
+           setError('');
         }else{
           setFile(null);
           setError('please select an image file png/jpeg');
@@ -27,6 +28,7 @@ function UploadForm() {
         <input type='file' onChange={handleChange}></input>
         <div>
           {error && <div className='error'> {error} </div>}
+          {file && <div className='file'> {file.name} </div>}
         </div>
     </form>
   )

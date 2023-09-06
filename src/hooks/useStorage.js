@@ -7,6 +7,8 @@ function useStorage(file) {
     const [error , setError] = useState(null);
     const [url , setUrl] = useState(null);
 
+    
+
     useEffect( () => {
         //references
         const storageRef = projectStorage.ref(file.name);
@@ -24,13 +26,11 @@ function useStorage(file) {
 
 
 
-  return (
-    <div>useStorage
-        {progress}
-        {url}
-        {error}
-    </div>
-  )
+  return { progress , url , error}
+    
+      
+    
+  
 }
 
 export default useStorage

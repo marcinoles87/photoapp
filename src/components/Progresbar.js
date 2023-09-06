@@ -3,7 +3,7 @@ import useStorage from '../hooks/useStorage'
 
 function Progresbar() {
   return (
-    <div>Progresbar</div>
+    <div className='progress-bar'>Progress</div>
   )
 }
 

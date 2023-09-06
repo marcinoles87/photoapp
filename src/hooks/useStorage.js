@@ -8,19 +8,15 @@ function useStorage(file) {
     const [url , setUrl] = useState(null);
 
     
-
+    console.log(file)
+    console.log(projectStorage)
     useEffect( () => {
         //references
-        const storageRef = projectStorage.ref(file.name);
-        storageRef.put(file).on('state changed' , (snap) => {
-            let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
-            setProgress(percentage);
-        } , (err) => {
-          setError(err);
-        } , async () => {
-          const url = await storageRef.getDownloadURL();
-          setUrl(url)
-        })
+        const storageRef = projectStorage.app.name;
+        console.log(storageRef)
+        let percentage = (file.bytesTransfered / file.totalBytes) * 100
+        console.log(percentage)
+        
 
     } , [file] );
 

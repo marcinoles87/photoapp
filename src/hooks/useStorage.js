@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState , useEffect } from 'react';
 import {projectStorage} from '../firebase/config'
+import { getStorage , ref , uploadBytes } from 'firebase/storage';
 
 function useStorage(file) {
     const [progress , setProgress] = useState(0);
@@ -12,10 +13,12 @@ function useStorage(file) {
     console.log(projectStorage)
     useEffect( () => {
         //references
-        const storageRef = projectStorage.app.name;
-        console.log(storageRef)
-        let percentage = (file.bytesTransfered / file.totalBytes) * 100
-        console.log(percentage)
+        const storag = projectStorage;
+        const storageRef = ref(storag , storag.name)
+        
+        uploadBytes(storageRef , file).then( (item) => {
+          console.log('upload')
+        })
         
 
     } , [file] );

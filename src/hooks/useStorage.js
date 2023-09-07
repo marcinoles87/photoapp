@@ -14,11 +14,9 @@ function useStorage(file) {
     useEffect( () => {
         //references
         const storag = projectStorage;
-        const storageRef = ref(storag , storag.name)
+        const storageRef = ref(projectStorage , 'img/fruits')
         
-        uploadBytes(storageRef , file).then( (item) => {
-          console.log('upload')
-        })
+        console.log(storageRef._location.path_)
         
 
     } , [file] );

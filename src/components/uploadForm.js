@@ -29,7 +29,7 @@ function UploadForm() {
         <input type='file' onChange={handleChange}></input>
         <div>
           {error && <div className='error'> {error} </div>}
-          {file && <div className='file'> {file.name} </div>}
+          {file && <div className='file'> {file.name}  </div>}
           {file && <Progresbar file={file} setFile={setFile}></Progresbar>}
         </div>
     </form>

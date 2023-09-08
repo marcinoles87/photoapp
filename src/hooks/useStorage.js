@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState , useEffect } from 'react';
-import {projectStorage} from '../firebase/config'
+import {projectStorage , projectFirestore} from '../firebase/config'
 import { getMetadata, getStorage , ref , uploadBytes, uploadBytesResumable , getDownloadURL} from 'firebase/storage';
 
 function useStorage(file) {
@@ -20,6 +20,7 @@ function useStorage(file) {
         const storag = getStorage();
         const storageRef = ref(storag , 'img/' + file.name);
         const uploadTask = uploadBytesResumable(storageRef , file , metadata)
+        const collectionRef = 
         
         uploadTask.on('state_changed' , 
         (snapshot) => {

@@ -1,8 +1,12 @@
 .form{
     margin: 20px;
-    width: 20vw;
+    width: auto;
     background-color: rgb(49, 56, 63);
     padding: 10px;
     font-size: 30px;
     color: rgb(108, 68, 231);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

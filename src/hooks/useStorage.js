@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState , useEffect } from 'react';
 import {projectStorage} from '../firebase/config'
-import { getMetadata, getStorage , ref , uploadBytes, uploadBytesResumable } from 'firebase/storage';
+import { getMetadata, getStorage , ref , uploadBytes, uploadBytesResumable , getDownloadURL} from 'firebase/storage';
 
 function useStorage(file) {
     const [progress , setProgress] = useState(0);
@@ -27,9 +27,16 @@ function useStorage(file) {
           setProgress(percent)
         }, (error) =>{
           setError(error)
+        } , async () => {
+          setUrl(getDownloadURL(uploadTask.snapshot.ref).then( (downloadUrl) => {
+            console.log('file available at - ' , downloadUrl)
+          }) 
+
+          )
+          console.log(url)
         }
         )
-        console.log(storageRef._location.path_)
+        
         
 
     } , [file] );

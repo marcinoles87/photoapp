@@ -27,5 +27,5 @@ const projectFirestore = getFirestore();
 
 
 
-export { projectStorage , projectFirestore}
+export { projectStorage , projectFirestore , app}
 

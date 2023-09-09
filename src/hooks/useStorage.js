@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState , useEffect } from 'react';
-import {projectStorage , projectFirestore} from '../firebase/config'
+import {projectStorage , projectFirestore , app} from '../firebase/config'
 import { getMetadata, getStorage , ref , uploadBytes, uploadBytesResumable , getDownloadURL} from 'firebase/storage';
+import { getFirestore } from 'firebase/firestore';
 
 function useStorage(file) {
     const [progress , setProgress] = useState(0);
@@ -9,8 +10,7 @@ function useStorage(file) {
     const [url , setUrl] = useState(null);
 
     
-    console.log(file)
-    console.log(projectStorage)
+    
     useEffect( () => {
 
       const metadata = {
@@ -18,9 +18,13 @@ function useStorage(file) {
       };
         //references
         const storag = getStorage();
+        const firestore = getFirestore();
+        const db = firestore(app)
         const storageRef = ref(storag , 'img/' + file.name);
         const uploadTask = uploadBytesResumable(storageRef , file , metadata)
-        const collectionRef = 
+        const collectionRef = ref()
+
+        console.log(db)
         
         uploadTask.on('state_changed' , 
         (snapshot) => {

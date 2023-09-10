@@ -19,12 +19,12 @@ function useStorage(file) {
         //references
         const storag = getStorage();
         const firestore = getFirestore();
-        const db = firestore(app)
+        // const db = firestore(app)
         const storageRef = ref(storag , 'img/' + file.name);
         const uploadTask = uploadBytesResumable(storageRef , file , metadata)
-        const collectionRef = ref()
+        const collectionRef = projectFirestore.collection('images')
 
-        console.log(db)
+        
         
         uploadTask.on('state_changed' , 
         (snapshot) => {
@@ -35,6 +35,7 @@ function useStorage(file) {
         } , async () => {
           setUrl(getDownloadURL(uploadTask.snapshot.ref).then( (downloadUrl) => {
             console.log('file available at - ' , downloadUrl)
+            collectionRef.add({url , createdAt})
           }) 
 
           )

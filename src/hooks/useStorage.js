@@ -2,7 +2,7 @@ import React from 'react'
 import { useState , useEffect } from 'react';
 import {projectStorage , projectFirestore , app} from '../firebase/config'
 import { getMetadata, getStorage , ref , uploadBytes, uploadBytesResumable , getDownloadURL} from 'firebase/storage';
-import { getFirestore } from 'firebase/firestore';
+import {  Timestamp, getFirestore } from 'firebase/firestore';
 
 function useStorage(file) {
     const [progress , setProgress] = useState(0);
@@ -24,7 +24,7 @@ function useStorage(file) {
         const uploadTask = uploadBytesResumable(storageRef , file , metadata)
         const collectionRef = projectFirestore.collection('images')
 
-        
+        console.log(collectionRef)
         
         uploadTask.on('state_changed' , 
         (snapshot) => {
@@ -35,7 +35,10 @@ function useStorage(file) {
         } , async () => {
           setUrl(getDownloadURL(uploadTask.snapshot.ref).then( (downloadUrl) => {
             console.log('file available at - ' , downloadUrl)
-            collectionRef.add({url , createdAt})
+            
+            
+            collectionRef.add({url})
+            setUrl(url)
           }) 
 
           )

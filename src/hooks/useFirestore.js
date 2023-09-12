@@ -1,9 +1,16 @@
-import React from 'react'
+import { useEffect , useState } from "react";
+import { projectFirestore } from "../firebase/config";
+import { collection } from "firebase/firestore";
 
-function useFirestore() {
-  return (
-    <div>useFirestore</div>
-  )
+const useFirestore = (collection) => {
+  const [docs , setDoc] = useState([]);
+
+  useEffect( () => {
+    projectFirestore.collection(collection)
+    .onSnapShot( (snap) => {
+
+    })
+  } , [collection])
+
+  return {docs}
 }
-
-export default useFirestore

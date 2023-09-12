@@ -20,8 +20,6 @@ function useStorage(file) {
       };
         //references
         const storag = getStorage();
-        const firestore = getFirestore();
-        // const db = firestore(app)
         const storageRef = ref(storag , 'img/' + file.name);
         const uploadTask = uploadBytesResumable(storageRef , file , metadata)
         const collectionRef = collection(projectFirestore,'images')

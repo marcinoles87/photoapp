@@ -9,6 +9,8 @@ function useStorage(file) {
     const [error , setError] = useState(null);
     const [url , setUrl] = useState(null);
 
+
+    let date = Timestamp.now().toDate()
     
     
     useEffect( () => {
@@ -39,10 +41,9 @@ function useStorage(file) {
             setUrl(url);
             setDoc(doc(collectionRef) , {
                 name: downloadUrl ,
-                state : ' last' ,
+                 createdAt : date
             });
-            // collectionRef.add(url)
-            // addDoc(collection({downloadUrl}))
+            
 
 
           }) 

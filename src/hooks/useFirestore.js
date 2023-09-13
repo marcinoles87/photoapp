@@ -10,9 +10,11 @@ const useFirestore = (coll) => {
     const unsub = onSnapshot(doc(projectFirestore , 'images' , 'sf') , (docum) =>
     {
      const documents = [];
-     docum.forEach( (doc) => {
+     documents.forEach( (doc) => {
       documents.push( {...doc.data(), id:doc.id})
      })
+
+     console.log(documents)
     })
 
     return () => unsub();

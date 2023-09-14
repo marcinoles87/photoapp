@@ -4,27 +4,21 @@ import { collection,getDocs, onSnapshot , doc, QuerySnapshot, Firestore} from "f
 
 const useFirestore = (coll) => {
   const [docs , setDoc] = useState([]);
+
+  useEffect( () => {
+    
+    const imgCol = doc(projectFirestore , 'images', 'images')
+    console.log(imgCol)
+
+    }, [])
   
 
-const imgCol = doc(projectFirestore , 'images' , 'im')
-console.log(imgCol)
 
-// 
-  // useEffect( (coll) => {
-    
-  //   imgCol.forEach( (doc) => {
-  //     console.log(doc.data())
-  //     const documents = [];
-  //     documents.push(...doc.data())
-  //     console.log(documents)
-  //   })
-  // } , [])
-
-
-  setDoc()
-
+  
 
 return {docs}
- }
+
+  }
+ 
 
 export default useFirestore

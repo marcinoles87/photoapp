@@ -6,12 +6,16 @@ const useFirestore = (collectionImages) => {
   const [docs , setDoc] = useState([]);
 
 
-  // useEffect( (collectionImages) => {
+  useEffect( (collectionImages) => {
     const db = getFirestore()
     const imgCol = collection(db,'images');
-    const docSnap = getDocs(imgCol);
-    console.log(docSnap)
-    // }, [collectionImages])
+ 
+
+    // const docRef = doc(db , 'images' , 'img')
+    // const docSnap = getDocs(imgCol);
+    // const newData = docSnap.map( item => item.data())
+    
+    }, [collectionImages])
   
 
 

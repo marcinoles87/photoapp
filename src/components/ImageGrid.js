@@ -6,8 +6,15 @@ function ImageGrid() {
   
   
   return (
-    <div className='img-grid'>ImageGrid</div>
+    <div className='img-grid'>ImageGrid
+    {docs.map( (item) => {
+
+      return <img src={item.name}></img>
+    })}  
+    
+    </div>
   )
+
 }
 
 export default ImageGrid

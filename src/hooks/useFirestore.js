@@ -11,10 +11,13 @@ const unsub = collection(projectFirestore , 'images')
     const getDocList = async () => {
       try {
       const data = await getDocs(unsub);
-      const filteredData = data.docs.map( (doc) => ( {...doc.data() , id: doc.id})
+      const filteredData = data.docs.map( (doc) => ( 
+        {...doc.data() , 
+          id: doc.id
+        })
 
       )
-      console.log(data)
+      console.log(filteredData)
       } catch (error) {
         console.log(error)
       }

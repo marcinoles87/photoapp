@@ -11,6 +11,12 @@
     align-items: center;
 }
 
+.title-header{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 30px;
+}
+
 .img-grid{
     display: flex;
     flex-direction: row;

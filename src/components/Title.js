@@ -4,9 +4,9 @@ import './title.css'
 function Title() {
   return (
     <div className='title-container'>
-        <h1>Title Gallery</h1>
+        <h1 className='title-header'>Personal Photo Gallery</h1>
         <h2>Your Picture</h2>
-        <p>Your Lorem ipsum personal webApp for gallery</p>
+        <p>Please upload your file and see how it work !</p>
     </div>
   )
 }

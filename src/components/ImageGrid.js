@@ -9,7 +9,7 @@ function ImageGrid() {
     <div className='img-grid'>ImageGrid
     {docs.map( (item) => {
 
-      return <img src={item.name}></img>
+      return <img className='im' src={item.name}></img>
     })}  
     
     </div>

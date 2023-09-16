@@ -41,7 +41,7 @@ const unsub = collection(projectFirestore , 'images')
 
     getDocList();
   
-  } , [])
+  } , [coll])
     
     console.log(docs)
     return { docs }

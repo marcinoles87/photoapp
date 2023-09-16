@@ -10,3 +10,17 @@
     justify-content: center;
     align-items: center;
 }
+
+.img-grid{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.im{
+    width: 30%;
+    object-fit:cover;
+
+}

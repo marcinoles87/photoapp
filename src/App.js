@@ -3,6 +3,7 @@ import './App.css';
 import Title from './components/Title';
 import UploadForm from './components/Uploadform';
 import ImageGrid from './components/ImageGrid';
+import Modal from './components/Modal';
 
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
     <div className="App">
      <Title></Title>
      <UploadForm></UploadForm>
-     <ImageGrid></ImageGrid>
+     <Modal></Modal>
      
     </div>
   );

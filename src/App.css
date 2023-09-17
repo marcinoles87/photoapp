@@ -23,14 +23,15 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap:5px;
+    gap:40px;
     
 }
 
 .im{
-    width: 30vw;
+    width: 25vw;
     height: 40vh;
     object-fit:fill;
+    overflow: hidden;
     /* margin-top: 10px; */
 
 }

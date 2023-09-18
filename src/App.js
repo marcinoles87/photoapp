@@ -14,8 +14,8 @@ function App() {
      <Title></Title>
      <UploadForm></UploadForm>
      <ImageGrid setSelected={setSelected}></ImageGrid>
-     <Modal selected={selected}></Modal>
-     
+    
+     {selected && <Modal selected={selected} setSelected={setSelected}></Modal>}
     </div>
   );
 }

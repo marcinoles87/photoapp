@@ -1,6 +1,6 @@
 import { useEffect , useState } from "react";
 import { projectFirestore } from "../firebase/config";
-import { collection,getDocs, onSnapshot , doc, QuerySnapshot, Firestore , CollectionReference} from "firebase/firestore";
+import { collection,getDocs} from "firebase/firestore";
 
 function useFirestore  (coll)  {
   const [docs , setDoc] = useState([]);
@@ -22,13 +22,11 @@ const unsub = collection(projectFirestore , 'images')
       
     }
     
-  
 
     getDocList();
   
   } , [unsub])
     
-    console.log(docs)
     return { docs }
   
 

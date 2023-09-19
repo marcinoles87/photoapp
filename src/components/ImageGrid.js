@@ -8,9 +8,9 @@ function ImageGrid({setSelected}) {
   return (
     <div className='img-grid'>
     {docs && docs.map( (item) => {
-
       return <img className='im' src={item.name} key={item.id} alt={item.id}
         onClick={ () => setSelected(item.name)}
+      
       ></img>
     })}  
     

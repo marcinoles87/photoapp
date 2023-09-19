@@ -9,6 +9,7 @@ function Progresbar({file , setFile}) {
 
     if(url) {
       setFile(null)
+      window.location.reload();
     }
   }, [url , setFile])
   

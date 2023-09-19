@@ -7,7 +7,7 @@ function Modal( {selected , setSelected}) {
   }
   return (
     <div className='backdrop'>
-        <img className='enlarge-drop' src={selected} alt='enlarge pic'></img>
+        <img className='enlarge-drop' src={selected} alt='enlarge pic' onClick={setClose}></img>
         <button className='backdrop-button' onClick={setClose}>X</button>
     </div>
   )

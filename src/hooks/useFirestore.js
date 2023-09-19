@@ -6,6 +6,7 @@ function useFirestore  (coll)  {
   const [docs , setDoc] = useState([]);
 
 const unsub = collection(projectFirestore , 'images')
+
   useEffect( () => {
    
     const getDocList = async () => {
@@ -25,7 +26,7 @@ const unsub = collection(projectFirestore , 'images')
 
     getDocList();
   
-  } , [coll])
+  } , [unsub])
     
     console.log(docs)
     return { docs }

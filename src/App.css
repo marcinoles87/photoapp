@@ -2,7 +2,7 @@
     margin: 20px;
     width: auto;
     background-color: rgb(49, 56, 63);
-    padding: 10px;
+    padding: 15px;
     font-size: 30px;
     color: rgb(108, 68, 231);
     display: flex;
@@ -69,8 +69,8 @@ input{
 
 span{
     border: 2px solid rgb(248, 54, 138);
-    border-radius: 100px;
-    padding: 5px;
+    border-radius: 20px;
+    padding: 10px;
 
 }
 

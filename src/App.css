@@ -59,5 +59,18 @@
     top: 0;
     right: 0;
     font-size: 30px;
+    
+}
+
+input{
+    display: none;
+    
+}
+
+span{
+    border: 2px solid rgb(248, 54, 138);
+    border-radius: 100px;
+    padding: 5px;
+
 }
 

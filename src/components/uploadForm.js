@@ -22,7 +22,7 @@ function UploadForm() {
         
     }
 
-    console.log(file)
+    
 
   return (
     <form className='form'>

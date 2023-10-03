@@ -8,8 +8,9 @@ function Modal( {selected , setSelected}) {
   }
   return (
     <motion.div   
-    initial= {{scale:0}}
-    whileTap={{ scale: 0.9 , rotate : 180 }}
+    initial= {{scale:0.4}}
+    whileTap={{ scale: 0 , rotate : 180  }}
+    whileDrag={{display: 'none'}}
     className='backdrop'>
         <img className='enlarge-drop' src={selected} alt='enlarge pic' onClick={setClose}></img>
         <button className='backdrop-button' onClick={setClose}>X</button>

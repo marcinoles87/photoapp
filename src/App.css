@@ -56,9 +56,12 @@
 
 .backdrop-button{
     position: fixed;
-    top: 0;
-    right: 0;
-    font-size: 30px;
+    top: 5px;
+    right: 10px;
+    font-size: 35px;
+    color:blue;
+    border:2px solid black;
+    border-radius: 20px;
     
 }
 

@@ -9,7 +9,6 @@ const unsub = collection(projectFirestore , 'images')
 
   useEffect( () => {
    
-    
     const getDocList = async () => {
       try {
       const data = await getDocs(unsub);
@@ -27,7 +26,7 @@ const unsub = collection(projectFirestore , 'images')
 
     getDocList();
   
-  } , [unsub])
+  } , [])
     
     return { docs }
   

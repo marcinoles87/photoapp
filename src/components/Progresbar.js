@@ -9,6 +9,8 @@ function Progresbar({file , setFile}) {
 
     if(url) {
       setFile(null)
+      
+      
     }
   }, [url , setFile])
   

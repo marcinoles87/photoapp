@@ -17,7 +17,6 @@ function UploadForm() {
            setError('');
 
            
-           
         }else{
           setFile(null);
           setError('please select an image file png/jpeg');

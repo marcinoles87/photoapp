@@ -13,7 +13,7 @@ function Progresbar({file , setFile}) {
   }, [url , setFile])
   
   return (
-    <div className='progress-bar' style={{width : progress + '%'}}>{progress}</div>
+    <div className='progress-bar' style={{width : progress + '%' , color : 'blue'}}>{progress}</div>
   )
 }
 

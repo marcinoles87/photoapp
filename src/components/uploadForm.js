@@ -15,6 +15,9 @@ function UploadForm() {
         if(selected && types.includes(selected.type)) {
            setFile(selected);
            setError('');
+
+           
+           
         }else{
           setFile(null);
           setError('please select an image file png/jpeg');

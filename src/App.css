@@ -77,3 +77,24 @@ span{
 
 }
 
+
+@media screen and (max-width:480px){
+
+.App{
+    display: flex;
+    flex-direction: column;
+}
+
+.img-grid{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.im{
+    width: 100%;
+    height: auto;
+    
+}
+    
+}

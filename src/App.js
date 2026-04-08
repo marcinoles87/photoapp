@@ -12,17 +12,30 @@ import { supabase } from './supabase/supabase'
 
 function App() {
   const [selected , setSelected] = useState(null)
+    const [file, setFile] = useState(null);
 
+
+
+    /*wybieranie zdjecia poprzez upload file*/ 
+  const handleChange = (e) =>{
+    const zdjecie = e.target.files[0]
+
+    setFile(zdjecie)
+  }
 
 
 
   return (
     <div className="App">
-     <Title></Title>
-     <UploadForm></UploadForm>
-     <ImageGrid setSelected={setSelected}></ImageGrid>
+
+
+    <input type="file" placeholder='add image' onChange={handleChange}></input>
+
+     {/* <Title></Title> */}
+     {/* <UploadForm></UploadForm> */}
+     {/* <ImageGrid setSelected={setSelected}></ImageGrid> */}
     
-     {selected && <Modal selected={selected} setSelected={setSelected}></Modal>}
+     {/* {selected && <Modal selected={selected} setSelected={setSelected}></Modal>} */}
     </div>
   );
 }

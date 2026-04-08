@@ -23,6 +23,12 @@ function App() {
     setFile(zdjecie)
   }
 
+  /*wysyłanie pliku do supabase*/ 
+  const uploadFile = () =>{
+
+
+  }
+
 
 
   return (
@@ -30,6 +36,7 @@ function App() {
 
 
     <input type="file" placeholder='add image' onChange={handleChange}></input>
+    <button onClick={uploadFile}>Wyślij</button>
 
      {/* <Title></Title> */}
      {/* <UploadForm></UploadForm> */}

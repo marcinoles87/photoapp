@@ -5,10 +5,15 @@ import UploadForm from './components/Uploadform';
 import ImageGrid from './components/ImageGrid';
 import Modal from './components/Modal';
 import { useState } from 'react';
+import {useUser,useSupabaseClient} from 'supabase'
 
 
 function App() {
   const [selected , setSelected] = useState(null)
+
+  const user = useUser()
+  const supabase = useSupabaseClient()
+
   return (
     <div className="App">
      <Title></Title>

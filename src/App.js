@@ -12,15 +12,24 @@ import { supabase } from './supabase/supabase'
 
 function App() {
   const [selected , setSelected] = useState(null)
-    const [file, setFile] = useState(null);
+  const [file, setFile] = useState(null);
 
 
 
     /*wybieranie zdjecia poprzez upload file*/ 
-  const handleChange = (e) =>{
-    const zdjecie = e.target.files[0]
-    console.log(zdjecie)
-    setFile(zdjecie)
+  async function handleChange(e) {
+    let file = e.target.files[0]
+
+    const {data,error} = await supabase
+    .storage
+    .from('images')
+    .upload('wydarzenia' + '/'+ file.name, file)
+    
+    if(data){
+      getImages()
+    }else{
+      console.log(error)
+    }
   }
 
   /*wysyłanie pliku do supabase*/ 

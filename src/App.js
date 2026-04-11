@@ -5,7 +5,9 @@ import UploadForm from './components/Uploadform';
 import ImageGrid from './components/ImageGrid';
 import Modal from './components/Modal';
 import { useState } from 'react';
-import { supabase } from './supabase/supabase'
+import { supabase} from './supabase/supabase'
+
+
 
 
 
@@ -14,6 +16,9 @@ function App() {
   const [selected , setSelected] = useState(null)
   const [file, setFile] = useState(null);
 
+  console.log(supabase)
+
+  const [images,setImages] = useState()
 
 
     /*wybieranie zdjecia poprzez upload file*/ 
@@ -26,7 +31,7 @@ function App() {
     .upload('wydarzenia' + '/'+ file.name, file)
     
     if(data){
-      getImages()
+      console.log(data)
     }else{
       console.log(error)
     }

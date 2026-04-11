@@ -19,7 +19,7 @@ function App() {
     /*wybieranie zdjecia poprzez upload file*/ 
   const handleChange = (e) =>{
     const zdjecie = e.target.files[0]
-
+    console.log(zdjecie)
     setFile(zdjecie)
   }
 
@@ -35,8 +35,10 @@ function App() {
     <div className="App">
 
 
-    <input type="file" placeholder='add image' onChange={handleChange}></input>
+    <input type="file" placeholder='add image' onChange={ (e) => handleChange(e)}></input>
     <button onClick={uploadFile}>Wyślij</button>
+
+    <img src={file} alt=""></img>
 
      {/* <Title></Title> */}
      {/* <UploadForm></UploadForm> */}

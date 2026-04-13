@@ -28,7 +28,7 @@ function App() {
     const {data,error} = await supabase
     .storage
     .from('images')
-    .upload('wydarzenia' + '/'+ file.name, file)
+    .upload(''+ file.name, file)
     
     if(data){
       console.log(data)

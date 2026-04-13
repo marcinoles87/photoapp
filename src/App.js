@@ -15,6 +15,7 @@ import { supabase} from './supabase/supabase'
 function App() {
   const [selected , setSelected] = useState(null)
   const [file, setFile] = useState(null);
+  const [fileUrl,setFileUrl] = useState();
 
   console.log(supabase)
 
@@ -25,6 +26,8 @@ function App() {
   async function handleChange(e) {
     let file = e.target.files[0]
 
+    let filePath = e.target.name[0]
+
     const {data,error} = await supabase
     .storage
     .from('images')
@@ -32,15 +35,28 @@ function App() {
     
     if(data){
       console.log(data)
+      setFile(data)
     }else{
       console.log(error)
     }
+
+    // const {data:url} = await supabase
+    // .storage
+    // .from('/images')
+    // .getPublicUrl();
+
+    // setFileUrl(url.publicUrl)
+    console.log(fileUrl)
   }
 
   /*wysyłanie pliku do supabase*/ 
   const uploadFile = () =>{
 
 
+  }
+
+  const handleShowAll = () => {
+    console.log(fileUrl)
   }
 
 
@@ -52,7 +68,9 @@ function App() {
     <input type="file" placeholder='add image' onChange={ (e) => handleChange(e)}></input>
     <button onClick={uploadFile}>Wyślij</button>
 
-    <img src={file} alt=""></img>
+    <img src={fileUrl} alt=""></img>
+
+    <button onClick={handleShowAll}>Pokaz wszystkie zdjecia</button>
 
      {/* <Title></Title> */}
      {/* <UploadForm></UploadForm> */}

@@ -4,8 +4,9 @@ import Title from './components/Title';
 import UploadForm from './components/Uploadform';
 import ImageGrid from './components/ImageGrid';
 import Modal from './components/Modal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { supabase} from './supabase/supabase'
+import { limit } from 'firebase/firestore';
 
 
 
@@ -15,11 +16,17 @@ import { supabase} from './supabase/supabase'
 function App() {
   const [selected , setSelected] = useState(null)
   const [file, setFile] = useState(null);
-  const [fileUrl,setFileUrl] = useState();
+  const [fileUrl,setFileUrl] = useState('');
 
   console.log(supabase)
 
-  const [images,setImages] = useState()
+  const [images,setImages] = useState('')
+
+  useEffect( () =>{
+
+    setImages([])
+
+    },[])
 
 
     /*wybieranie zdjecia poprzez upload file*/ 
@@ -40,13 +47,7 @@ function App() {
       console.log(error)
     }
 
-    // const {data:url} = await supabase
-    // .storage
-    // .from('/images')
-    // .getPublicUrl();
-
-    // setFileUrl(url.publicUrl)
-    console.log(fileUrl)
+  
   }
 
   /*wysyłanie pliku do supabase*/ 
@@ -55,8 +56,30 @@ function App() {
 
   }
 
-  const handleShowAll = () => {
-    console.log(fileUrl)
+  async function handleShowAll(e){
+
+    const {data,error} = await supabase
+    .storage
+    .from('images')
+    .list('', {
+      limit:100,
+      offset:0,
+      sortBy: { column: 'name', order: 'asc' },
+    })
+
+    if(error){
+      console.log(error)
+    }else{
+      setImages(data)
+    }
+
+    
+
+   console.log(data)
+
+
+   console.log(images)
+    
   }
 
 
@@ -68,9 +91,19 @@ function App() {
     <input type="file" placeholder='add image' onChange={ (e) => handleChange(e)}></input>
     <button onClick={uploadFile}>Wyślij</button>
 
-    <img src={fileUrl} alt=""></img>
+    
 
     <button onClick={handleShowAll}>Pokaz wszystkie zdjecia</button>
+
+    {/* {images ? '' : images.map( (item,index) => {
+      return(
+        <div key={index}>
+          <img src={item} alt=""></img>
+        </div>
+      )
+    })} */}
+
+  
 
      {/* <Title></Title> */}
      {/* <UploadForm></UploadForm> */}

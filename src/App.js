@@ -21,6 +21,7 @@ function App() {
   console.log(supabase)
 
   const [images,setImages] = useState('')
+  const [load , setLoad] = useState(false)
 
   useEffect( () =>{
 
@@ -38,7 +39,7 @@ function App() {
     const {data,error} = await supabase
     .storage
     .from('images')
-    .upload(''+ file.name, file)
+    .upload(''+ file.name + Math.random(0)*1000, file)
     
     if(data){
       console.log(data)
@@ -71,6 +72,7 @@ function App() {
       console.log(error)
     }else{
       setImages(data)
+      setLoad(true)
     }
 
     
@@ -95,13 +97,19 @@ function App() {
 
     <button onClick={handleShowAll}>Pokaz wszystkie zdjecia</button>
 
-    {/* {images ? '' : images.map( (item,index) => {
+    {load ? images.map( (item,index) => {
       return(
         <div key={index}>
           <img src={item} alt=""></img>
+          <p>{item.name}</p>
         </div>
       )
-    })} */}
+    })
+
+    :''
+  
+  
+  }
 
   
 

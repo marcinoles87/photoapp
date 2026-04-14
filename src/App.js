@@ -78,7 +78,7 @@ function App() {
     if(error){
       console.log(error)
     }else{
-      setImages(data)
+      setImages(fileUrl)
       setLoad(true)
     }
 
@@ -107,7 +107,7 @@ function App() {
     {load ? images.map( (item,index) => {
       return(
         <div key={index}>
-          <img src={item} alt=""></img>
+          <img src={item.url} alt=""></img>
           <p>{item.name}</p>
         </div>
       )

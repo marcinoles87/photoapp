@@ -68,6 +68,13 @@ function App() {
       sortBy: { column: 'name', order: 'asc' },
     })
 
+    const fileUrl = data.map( item => ({
+      name:item.name,
+      url:supabase.storage.from('images').getPublicUrl(item.name).data.publicUrl
+    }))
+
+    console.log(fileUrl)
+
     if(error){
       console.log(error)
     }else{

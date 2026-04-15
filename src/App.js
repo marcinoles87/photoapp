@@ -109,9 +109,8 @@ function App() {
     <label>Opis wydarzenia</label>
 
     <input type="text" placeholder=''></input>
-    <button onClick={uploadFile}>Wyślij</button>
 
-    
+    <button onClick={uploadFile}>Wyślij</button>
 
     <button onClick={handleShowAll}>Pokaz wszystkie zdjecia</button>
 

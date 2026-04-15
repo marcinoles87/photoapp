@@ -107,7 +107,7 @@ function App() {
     {load ? images.map( (item,index) => {
       return(
         <div key={index}>
-          <img src={item.url} alt={item.name}></img>
+          <img className='img' src={item.url} alt={item.name}></img>
           <p>{item.name}</p>
         </div>
       )

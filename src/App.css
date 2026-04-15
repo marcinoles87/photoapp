@@ -20,3 +20,10 @@ button{
     height: 400px;
     object-fit: contain;
 }
+
+.img-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

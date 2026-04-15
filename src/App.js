@@ -65,7 +65,7 @@ function App() {
     .from('images')
     .list('', {
       limit:100,
-      offset:0,
+      offset:1,
       sortBy: { column: 'name', order: 'asc' },
     })
 
@@ -88,6 +88,10 @@ function App() {
     
   }
 
+  const deleteFile = () =>{
+
+  }
+
 
 
   return (
@@ -103,9 +107,10 @@ function App() {
 
     {load ? images.map( (item,index) => {
       return(
-        <div key={index}>
+        <div key={index} className='img-group'>
           <img className='img' src={item.url} alt={item.name}></img>
           <p>{item.name}</p>
+          <button onClick={deleteFile}>Delete</button>
         </div>
       )
     })

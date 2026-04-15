@@ -99,6 +99,16 @@ function App() {
 
 
     <input type="file" placeholder='add image' onChange={ (e) => handleChange(e)}></input>
+
+    <label>Data</label>
+    <input type="date" placeholder=''></input>
+
+    <label>Nazwa wydarzenia</label>
+    <input type="opis" placeholder='opis'></input>
+
+    <label>Opis wydarzenia</label>
+
+    <input type="text" placeholder=''></input>
     <button onClick={uploadFile}>Wyślij</button>
 
     

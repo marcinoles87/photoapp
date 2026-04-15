@@ -14,6 +14,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 function App() {
+
   const [selected , setSelected] = useState(null)
   const [file, setFile] = useState(null);
   const [fileUrl,setFileUrl] = useState('');
@@ -31,10 +32,10 @@ function App() {
 
 
     /*wybieranie zdjecia poprzez upload file*/ 
-  async function handleChange(e) {
-    let file = e.target.files[0]
 
-    let filePath = e.target.name[0]
+  async function handleChange(e) {
+
+    let file = e.target.files[0]
 
     const {data,error} = await supabase
     .storage
@@ -84,10 +85,6 @@ function App() {
 
     
 
-   console.log(data)
-
-
-   console.log(images)
     
   }
 

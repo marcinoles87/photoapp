@@ -5,8 +5,8 @@ import UploadForm from './components/Uploadform';
 import ImageGrid from './components/ImageGrid';
 import Modal from './components/Modal';
 import { useEffect, useState } from 'react';
-import { supabase} from './supabase/supabase'
-import { limit } from 'firebase/firestore';
+import { supabase} from './supabase/supabase';
+import { v4 as uuidv4 } from 'uuid';
 
 
 
@@ -39,7 +39,7 @@ function App() {
     const {data,error} = await supabase
     .storage
     .from('images')
-    .upload(''+ file.name + Math.random(0)*1000, file)
+    .upload(''+ file.name + uuidv4(), file)
     
     if(data){
       console.log(data)

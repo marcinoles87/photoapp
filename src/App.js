@@ -18,8 +18,14 @@ function App() {
   const [selected , setSelected] = useState(null)
   const [file, setFile] = useState(null);
   const [fileUrl,setFileUrl] = useState('');
+  const [dataWydarzenia,setData] = useState();
+  const [nazwaWydarzenia,setNazwa] = useState('');
+  const [opisWydarzenia,setOpis] = useState('')
 
   console.log(supabase)
+  console.log(dataWydarzenia)
+  console.log(nazwaWydarzenia)
+  console.log(opisWydarzenia)
 
   const [images,setImages] = useState('')
   const [load , setLoad] = useState(false)
@@ -101,14 +107,14 @@ function App() {
     <input type="file" placeholder='add image' onChange={ (e) => handleChange(e)}></input>
 
     <label>Data</label>
-    <input type="date" placeholder=''></input>
+    <input type="date" onChange={ (e) =>setData(e.target.value)}></input>
 
     <label>Nazwa wydarzenia</label>
-    <input type="opis" placeholder='opis'></input>
+    <input type="text" placeholder='opis' onChange={(e) =>setNazwa(e.target.value)}></input>
 
     <label>Opis wydarzenia</label>
 
-    <input type="text" placeholder=''></input>
+    <input type="text" onChange={(e) =>setOpis(e.target.value)}></input>
 
     <button onClick={uploadFile}>Wyślij</button>
 

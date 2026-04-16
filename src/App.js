@@ -60,6 +60,14 @@ function App() {
 
   /*wysyłanie pliku do supabase*/ 
   const uploadFile = () =>{
+    
+    // const fileUrl = data.map( item => ({
+    //   name:item.name,
+    //   data:dataWydarzenia,
+    //   nazwaWydarzenia:nazwaWydarzenia,
+    //   opisWydarzenia:opisWydarzenia,
+    //   url:supabase.storage.from('images').getPublicUrl(item.name).data.publicUrl
+    // }))
 
 
   }
@@ -77,6 +85,9 @@ function App() {
 
     const fileUrl = data.map( item => ({
       name:item.name,
+      data:dataWydarzenia,
+      nazwaWydarzenia:nazwaWydarzenia,
+      opisWydarzenia:opisWydarzenia,
       url:supabase.storage.from('images').getPublicUrl(item.name).data.publicUrl
     }))
 
@@ -123,6 +134,8 @@ function App() {
     {load ? images.map( (item,index) => {
       return(
         <div key={index} className='img-group'>
+          <h1>{item.nazwaWydarzenia}</h1>
+          <h2>{item.opisWydarzenia}</h2>
           <img className='img' src={item.url} alt={item.name}></img>
           <p>{item.name}</p>
           <button onClick={deleteFile}>Delete</button>

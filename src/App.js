@@ -21,6 +21,7 @@ function App() {
   const [dataWydarzenia,setData] = useState();
   const [nazwaWydarzenia,setNazwa] = useState('');
   const [opisWydarzenia,setOpis] = useState('')
+  const [img1,setImg1] =useState('')
 
   console.log(supabase)
   console.log(dataWydarzenia)
@@ -49,11 +50,19 @@ function App() {
     .upload(''+ file.name + uuidv4(), file)
     
     if(data){
-      console.log(data)
+
       setFile(data)
     }else{
-      console.log(error)
+
     }
+
+    const fileUrl = {url:supabase.storage.from('images').getPublicUrl(file).data.publicUrl}
+    console.log(fileUrl)
+     
+
+
+
+    
 
   
   }

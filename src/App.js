@@ -23,10 +23,7 @@ function App() {
   const [opisWydarzenia,setOpis] = useState('')
   const [img1,setImg1] =useState('')
 
-  console.log(supabase)
-  console.log(dataWydarzenia)
-  console.log(nazwaWydarzenia)
-  console.log(opisWydarzenia)
+
 
   const [images,setImages] = useState('')
   const [load , setLoad] = useState(false)
@@ -47,20 +44,16 @@ function App() {
     const {data,error} = await supabase
     .storage
     .from('images')
-    .upload(''+ file.name + uuidv4(), file)
+    .upload(uuidv4()+ file.name , file)
     
     if(data){
-
+      
       setFile(data)
     }else{
 
     }
 
-    const fileUrl = {url:supabase.storage.from('images').getPublicUrl(file).data.publicUrl}
-    console.log(fileUrl)
-     
-
-
+   
 
     
 
@@ -70,13 +63,13 @@ function App() {
   /*wysyłanie pliku do supabase*/ 
   const uploadFile = () =>{
     
-    // const fileUrl = data.map( item => ({
-    //   name:item.name,
-    //   data:dataWydarzenia,
-    //   nazwaWydarzenia:nazwaWydarzenia,
-    //   opisWydarzenia:opisWydarzenia,
-    //   url:supabase.storage.from('images').getPublicUrl(item.name).data.publicUrl
-    // }))
+    const wydarzenie = {
+      data:dataWydarzenia,
+      nazwaWydarzenia:nazwaWydarzenia,
+      opisWydarzenia:opisWydarzenia,
+      img:fileUrl
+
+    }
 
 
   }

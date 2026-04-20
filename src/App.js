@@ -60,7 +60,12 @@ function App() {
   }
 
   /*wysyłanie pliku do supabase*/ 
-  const uploadFile = () =>{
+  async function uploadFile(params) {
+    
+  
+
+    const { data, error } = await supabase.from('przedszkole111').select('*');
+console.log(data);
     
     const wydarzenie = {
       data:dataWydarzenia,

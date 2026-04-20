@@ -16,7 +16,6 @@ import { v4 as uuidv4 } from 'uuid';
 function App() {
 
   const [selected , setSelected] = useState(null)
-  const [file, setFile] = useState(null);
   const [fileUrl,setFileUrl] = useState('');
   const [dataWydarzenia,setData] = useState();
   const [nazwaWydarzenia,setNazwa] = useState('');
@@ -48,7 +47,7 @@ function App() {
     
     if(data){
       
-      setFile(data)
+      setFileUrl(data)
     }else{
 
     }
@@ -107,9 +106,19 @@ function App() {
     
   }
 
-  const deleteFile = () =>{
+  async function deleteFile(item) {
+    
+   
+
+    const {data,error} = await supabase
+    .storage
+    .from('images')
+    .remove(item)
+
+    console.log(item)
 
   }
+
 
 
 
@@ -140,7 +149,7 @@ function App() {
           <h2>{item.opisWydarzenia}</h2>
           <img className='img' src={item.url} alt={item.name}></img>
           <p>{item.name}</p>
-          <button onClick={deleteFile}>Delete</button>
+          <button onClick={ (e) =>deleteFile(item)}>Delete</button>
         </div>
       )
     })

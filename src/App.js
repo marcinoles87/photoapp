@@ -64,8 +64,9 @@ function App() {
     
   
 
-    const { data, error } = await supabase.from('przedszkole111').select('*');
+    const { data, error } = await supabase.from('przedszkole111').select();
 console.log(data);
+console.log(error)
     
     const wydarzenie = {
       data:dataWydarzenia,

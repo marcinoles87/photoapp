@@ -60,11 +60,11 @@ function App() {
   }
 
   /*wysyłanie pliku do supabase*/ 
-  async function uploadFile(params) {
+  async function uploadFile() {
     
   
 
-    const { data, error } = await supabase.from('przedszkole111').select();
+    const { data, error } = await supabase.from('przedszkole111').select('*');
 console.log(data);
 console.log(error)
     

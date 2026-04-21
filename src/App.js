@@ -7,6 +7,7 @@ import Modal from './components/Modal';
 import { useEffect, useState } from 'react';
 import { supabase} from './supabase/supabase';
 import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios'
 
 
 
@@ -21,6 +22,7 @@ function App() {
   const [nazwaWydarzenia,setNazwa] = useState('');
   const [opisWydarzenia,setOpis] = useState('')
   const [img1,setImg1] =useState('')
+  const [dane,setDane] = useState([])
 
 
 
@@ -32,6 +34,8 @@ function App() {
     setImages([])
 
     },[])
+
+  
 
 
     /*wybieranie zdjecia poprzez upload file*/ 
@@ -62,11 +66,15 @@ function App() {
   /*wysyłanie pliku do supabase*/ 
   async function uploadFile() {
     
-  
+  console.log(supabase)
 
-    const { data, error } = await supabase.from('przedszkole111').select('*');
-console.log(data);
-console.log(error)
+    const { data, error } = await supabase
+    .from('przedszkole111dane')
+    .select('*')
+    .order('data', { ascending: false })
+    setDane(data)
+
+console.log(dane);
     
     const wydarzenie = {
       data:dataWydarzenia,

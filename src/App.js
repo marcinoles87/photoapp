@@ -1,13 +1,9 @@
 
 import './App.css';
-import Title from './components/Title';
-import UploadForm from './components/Uploadform';
-import ImageGrid from './components/ImageGrid';
-import Modal from './components/Modal';
+
 import { useEffect, useState } from 'react';
 import { supabase} from './supabase/supabase';
 import { v4 as uuidv4 } from 'uuid';
-import axios from 'axios'
 
 
 
@@ -68,6 +64,14 @@ function App() {
     
   console.log(supabase)
 
+  let wydarzenie = {
+      data:dataWydarzenia,
+      nazwaWydarzenia:nazwaWydarzenia,
+      opisWydarzenia:opisWydarzenia,
+      img:fileUrl
+
+    }
+
     const { data, error } = await supabase
     .from('przedszkole111dane')
     .select('*')
@@ -75,14 +79,20 @@ function App() {
     setDane(data)
 
 console.log(dane);
-    
-    const wydarzenie = {
+
+    const { dat, err } = await supabase
+.from('przedszkole111dane')
+.insert({
       data:dataWydarzenia,
       nazwaWydarzenia:nazwaWydarzenia,
       opisWydarzenia:opisWydarzenia,
-      img:fileUrl
+      img:fileUrl  
+});
 
-    }
+if (err) console.error(err);
+else console.log('Inserted:', dat);
+    
+    
 
 
   }

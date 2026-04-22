@@ -84,7 +84,7 @@ console.log(dane);
 .from('przedszkole111dane')
 .insert({
       data:dataWydarzenia,
-      nazwaWydarzenia:nazwaWydarzenia,
+      wydarzenie:nazwaWydarzenia,
       opisWydarzenia:opisWydarzenia,
       img:fileUrl  
 });

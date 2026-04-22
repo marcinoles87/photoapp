@@ -47,10 +47,12 @@ function App() {
     
     if(data){
       
-      setFileUrl(data)
+      setFileUrl(data.fullPath)
     }else{
 
     }
+
+    console.log(fileUrl)
 
    
 
@@ -64,13 +66,6 @@ function App() {
     
   console.log(supabase)
 
-  let wydarzenie = {
-      data:dataWydarzenia,
-      nazwaWydarzenia:nazwaWydarzenia,
-      opisWydarzenia:opisWydarzenia,
-      img:fileUrl
-
-    }
 
     const { data, error } = await supabase
     .from('przedszkole111dane')

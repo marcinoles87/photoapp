@@ -47,7 +47,8 @@ function App() {
     
     if(data){
       
-      setFileUrl(data.fullPath)
+      console.log(data)
+      setFileUrl(supabase.storage.from('images').getPublicUrl(file.name).data.publicUrl)
     }else{
 
     }
@@ -94,7 +95,14 @@ else console.log('Inserted:', dat);
 
   async function handleShowAll(e){
 
-    const {data,error} = await supabase
+    // const { datas, error } = await supabase
+    // .from('przedszkole111dane')
+    // .select('*')
+    // .order('data', { ascending: false })
+
+    // setDane(datas)
+
+    const {data,err} = await supabase
     .storage
     .from('images')
     .list('', {
@@ -113,8 +121,8 @@ else console.log('Inserted:', dat);
 
     console.log(fileUrl)
 
-    if(error){
-      console.log(error)
+    if(err){
+      console.log(err)
     }else{
       setImages(fileUrl)
       setLoad(true)
@@ -161,12 +169,12 @@ else console.log('Inserted:', dat);
 
     <button onClick={handleShowAll}>Pokaz wszystkie zdjecia</button>
 
-    {dane ? dane.map( (item,index) => {
+    {images ? images.map( (item,index) => {
       return(
         <div key={index} className='img-group'>
           <h1>{item.wydarzenie}</h1>
           <h2>{item.opisWydarzenia}</h2>
-          <img className='img' src={item.img} alt={index}></img>
+          <img className='img' src={item.url} alt={index}></img>
           <p>{item.id}</p>
           <button onClick={ (e) =>deleteFile(item)}>Delete</button>
         </div>

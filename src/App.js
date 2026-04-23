@@ -12,12 +12,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 function App() {
 
-  const [selected , setSelected] = useState(null)
-  const [fileUrl,setFileUrl] = useState('');
+  let [fileUrl,setFileUrl] = useState('');
   const [dataWydarzenia,setData] = useState();
   const [nazwaWydarzenia,setNazwa] = useState('');
   const [opisWydarzenia,setOpis] = useState('')
-  const [img1,setImg1] =useState('')
   const [dane,setDane] = useState([])
 
 
@@ -40,7 +38,7 @@ function App() {
 
     let file = e.target.files[0]
 
-    const {data,error} = await supabase
+    let {data,error} = await supabase
     .storage
     .from('images')
     .upload(uuidv4()+ file.name , file)
@@ -54,12 +52,6 @@ function App() {
     }
 
     console.log(fileUrl)
-
-   
-
-    
-
-  
   }
 
   /*wysyłanie pliku do supabase*/ 
@@ -67,66 +59,59 @@ function App() {
     
   console.log(supabase)
 
-
-//     const { data, error } = await supabase
-//     .from('przedszkole111dane')
-//     .select('*')
-//     .order('data', { ascending: false })
-//     setDane(data)
-
-// console.log(dane);
-
-    const { dat, err } = await supabase
-.from('przedszkole111dane')
-.insert({
+    let { dat, err } = await supabase
+    .from('przedszkole111dane')
+    .insert({
       data:dataWydarzenia,
       wydarzenie:nazwaWydarzenia,
       opisWydarzenia:opisWydarzenia,
-      img:fileUrl
+      img:fileUrl = supabase.storage.from('images').getPublicUrl(opisWydarzenia).data.publicUrl
 });
 
 if (err) console.error(err);
 else console.log('Inserted:', dat);
     
     
-
+     
 
   }
 
   async function handleShowAll(e){
 
-    const { datas, error } = await supabase
+    const { data, error } = await supabase
     .from('przedszkole111dane')
     .select('*')
     .order('data', { ascending: false })
 
-    setDane(datas)
+    setDane(data)
 
-    const {data,err} = await supabase
-    .storage
-    .from('images')
-    .list('', {
-      limit:100,
-      offset:1,
-      sortBy: { column: 'name', order: 'asc' },
-    })
+    console.log(dane)
 
-    const fileUrl = data.map( item => ({
-      name:item.name,
-      data:dataWydarzenia,
-      nazwaWydarzenia:nazwaWydarzenia,
-      opisWydarzenia:opisWydarzenia,
-      url:supabase.storage.from('images').getPublicUrl(item.name).data.publicUrl
-    }))
+    // const {data,err} = await supabase
+    // .storage
+    // .from('images')
+    // .list('', {
+    //   limit:100,
+    //   offset:1,
+    //   sortBy: { column: 'name', order: 'asc' },
+    // })
 
-    console.log(fileUrl)
+    // const fileUrl = data.map( item => ({
+    //   name:item.name,
+    //   data:dataWydarzenia,
+    //   nazwaWydarzenia:nazwaWydarzenia,
+    //   opisWydarzenia:opisWydarzenia,
+    //   url:supabase.storage.from('images').getPublicUrl(item.name).data.publicUrl
+    // }))
 
-    if(err){
-      console.log(err)
-    }else{
-      setImages(fileUrl)
-      setLoad(true)
-    }
+    // console.log(fileUrl)
+
+    // if(err){
+    //   console.log(err)
+    // }else{
+    //   setImages(fileUrl)
+    //   setLoad(true)
+    // }
 
     
 
@@ -169,12 +154,12 @@ else console.log('Inserted:', dat);
 
     <button onClick={handleShowAll}>Pokaz wszystkie zdjecia</button>
 
-    {images ? images.map( (item,index) => {
+    {dane ? dane.map( (item,index) => {
       return(
         <div key={index} className='img-group'>
           <h1>{item.wydarzenie}</h1>
           <h2>{item.opisWydarzenia}</h2>
-          <img className='img' src={item.url} alt={index}></img>
+          <img className='img' src={item.img} alt={index}></img>
           <p>{item.id}</p>
           <button onClick={ (e) =>deleteFile(item)}>Delete</button>
         </div>

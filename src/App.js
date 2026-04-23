@@ -161,13 +161,13 @@ else console.log('Inserted:', dat);
 
     <button onClick={handleShowAll}>Pokaz wszystkie zdjecia</button>
 
-    {load ? images.map( (item,index) => {
+    {dane ? dane.map( (item,index) => {
       return(
         <div key={index} className='img-group'>
-          <h1>{item.nazwaWydarzenia}</h1>
+          <h1>{item.wydarzenie}</h1>
           <h2>{item.opisWydarzenia}</h2>
-          <img className='img' src={item.url} alt={item.name}></img>
-          <p>{item.name}</p>
+          <img className='img' src={item.img} alt={index}></img>
+          <p>{item.id}</p>
           <button onClick={ (e) =>deleteFile(item)}>Delete</button>
         </div>
       )

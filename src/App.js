@@ -95,12 +95,12 @@ else console.log('Inserted:', dat);
 
   async function handleShowAll(e){
 
-    // const { datas, error } = await supabase
-    // .from('przedszkole111dane')
-    // .select('*')
-    // .order('data', { ascending: false })
+    const { datas, error } = await supabase
+    .from('przedszkole111dane')
+    .select('*')
+    .order('data', { ascending: false })
 
-    // setDane(datas)
+    setDane(datas)
 
     const {data,err} = await supabase
     .storage

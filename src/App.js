@@ -68,13 +68,13 @@ function App() {
   console.log(supabase)
 
 
-    const { data, error } = await supabase
-    .from('przedszkole111dane')
-    .select('*')
-    .order('data', { ascending: false })
-    setDane(data)
+//     const { data, error } = await supabase
+//     .from('przedszkole111dane')
+//     .select('*')
+//     .order('data', { ascending: false })
+//     setDane(data)
 
-console.log(dane);
+// console.log(dane);
 
     const { dat, err } = await supabase
 .from('przedszkole111dane')
@@ -82,7 +82,7 @@ console.log(dane);
       data:dataWydarzenia,
       wydarzenie:nazwaWydarzenia,
       opisWydarzenia:opisWydarzenia,
-      img:fileUrl  
+      img:fileUrl
 });
 
 if (err) console.error(err);

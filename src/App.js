@@ -43,23 +43,26 @@ function App() {
     .from('images')
     .upload(uuidv4()+ file.name , file)
     
-    if(data){
+    // if(data){
       
-      console.log(data)
-      setFileUrl(supabase.storage.from('images').getPublicUrl(file.name).data.publicUrl)
-    }else{
+    //   console.log(data)
+    //   // setFileUrl(supabase.storage.from('images').getPublicUrl(file.name).data.publicUrl)
+    // }else{
 
-    }
+    // }
 
-     const { data: fileUrl} = await supabase.storage
+     const { data:urlPath} = await supabase.storage
          .from('images')
-         .getPublicUrl(`${file.name}` ?? "default");
-      if (fileUrl) {
-        setFileUrl(fileUrl.publicUrl);
+         .getPublicUrl(data.path);
+      if (urlPath){
+        console.log(urlPath.publicUrl);
+        setFileUrl(urlPath.publicUrl)
   }
 
     console.log(fileUrl)
   }
+
+  
 
   /*wysyłanie pliku do supabase*/ 
   async function uploadFile() {
@@ -72,7 +75,7 @@ function App() {
       data:dataWydarzenia,
       wydarzenie:nazwaWydarzenia,
       opisWydarzenia:opisWydarzenia,
-      img:fileUrl = supabase.storage.from('images').getPublicUrl(opisWydarzenia).data.publicUrl
+      img:fileUrl
 });
 
 if (err) console.error(err);

@@ -51,6 +51,13 @@ function App() {
 
     }
 
+     const { data: fileUrl} = await supabase.storage
+         .from('images')
+         .getPublicUrl(`${file.name}` ?? "default");
+      if (fileUrl) {
+        setFileUrl(fileUrl.publicUrl);
+  }
+
     console.log(fileUrl)
   }
 
@@ -153,6 +160,7 @@ else console.log('Inserted:', dat);
     <button onClick={uploadFile}>Wyślij</button>
 
     <button onClick={handleShowAll}>Pokaz wszystkie zdjecia</button>
+
 
     {dane ? dane.map( (item,index) => {
       return(

@@ -133,7 +133,6 @@ else console.log('Inserted:', dat);
    console.log(item)
 
     const {data,error} = await supabase
-    .storage
     .from('przedszkole111dane')
     .delete()
     .eq('id',item.id)

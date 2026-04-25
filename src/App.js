@@ -18,14 +18,12 @@ function App() {
   const [opisWydarzenia,setOpis] = useState('')
   const [dane,setDane] = useState([])
 
-
-
-  const [images,setImages] = useState('')
   const [load , setLoad] = useState(false)
 
   useEffect( () =>{
 
-    setImages([])
+ 
+
 
     },[])
 
@@ -43,13 +41,6 @@ function App() {
     .from('images')
     .upload(uuidv4()+ file.name , file)
     
-    // if(data){
-      
-    //   console.log(data)
-    //   // setFileUrl(supabase.storage.from('images').getPublicUrl(file.name).data.publicUrl)
-    // }else{
-
-    // }
 
      const { data:urlPath} = await supabase.storage
          .from('images')
@@ -67,7 +58,6 @@ function App() {
   /*wysyłanie pliku do supabase*/ 
   async function uploadFile() {
     
-  console.log(supabase)
 
     let { dat, err } = await supabase
     .from('przedszkole111wydarzenia')
@@ -78,13 +68,17 @@ function App() {
       img:fileUrl
 });
 
-if (err) console.error(err);
-else console.log('Inserted:', dat);
+if(err){
+  console.error(err)}
+  else{
+    alert('dodano wydarzenie do bazy danych')
+  }
     
     
      
 
   }
+
 
   async function handleShowAll(e){
 
@@ -92,6 +86,10 @@ else console.log('Inserted:', dat);
     .from('przedszkole111wydarzenia')
     .select('*')
     .order('data', { ascending: false })
+
+    if(data.length < 1){
+      alert('brak danych do wyświetlenia')
+    }
 
     setDane(data)
 
@@ -127,6 +125,8 @@ else console.log('Inserted:', dat);
 
     
   }
+
+  /*usuwanie wybranego elementu na podstawie id */
 
   async function deleteFile(item) {
     
@@ -167,16 +167,15 @@ else console.log('Inserted:', dat);
     {dane ? dane.map( (item,index) => {
       return(
         <div key={index} className='img-group'>
-          <h1>{item.wydarzenie}</h1>
+          <h1>{item.id}{item.wydarzenie}</h1>
           <h2>{item.opisWydarzenia}</h2>
           <img className='img' src={item.img} alt={index}></img>
-          <p>{item.id}</p>
           <button onClick={ (e) =>deleteFile(item)}>Delete</button>
         </div>
       )
     })
 
-    :''
+    :'brak danych do wyświetlenia'
   
   
   }

@@ -130,14 +130,14 @@ else console.log('Inserted:', dat);
 
   async function deleteFile(item) {
     
-   
+   console.log(item)
 
     const {data,error} = await supabase
     .storage
-    .from('images')
-    .remove(item)
+    .from('przedszkole111dane')
+    .delete()
+    .eq('id',item.id)
 
-    console.log(item)
 
   }
 

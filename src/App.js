@@ -70,7 +70,7 @@ function App() {
   console.log(supabase)
 
     let { dat, err } = await supabase
-    .from('przedszkole111dane')
+    .from('przedszkole111wydarzenia')
     .insert({
       data:dataWydarzenia,
       wydarzenie:nazwaWydarzenia,
@@ -89,7 +89,7 @@ else console.log('Inserted:', dat);
   async function handleShowAll(e){
 
     const { data, error } = await supabase
-    .from('przedszkole111dane')
+    .from('przedszkole111wydarzenia')
     .select('*')
     .order('data', { ascending: false })
 
@@ -133,7 +133,7 @@ else console.log('Inserted:', dat);
    console.log(item)
 
     const {data,error} = await supabase
-    .from('przedszkole111dane')
+    .from('przedszkole111wydarzenia')
     .delete()
     .eq('id',item.id)
 

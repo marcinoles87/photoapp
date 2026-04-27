@@ -13,6 +13,8 @@ import { v4 as uuidv4 } from 'uuid';
 function App() {
 
   let [fileUrl,setFileUrl] = useState('');
+  let [fileUrl2,setFileUrl2] = useState('');
+  let [fileUrl3,setFileUrl3] = useState('');
   const [dataWydarzenia,setData] = useState();
   const [nazwaWydarzenia,setNazwa] = useState('');
   const [opisWydarzenia,setOpis] = useState('')
@@ -32,7 +34,7 @@ function App() {
 
     /*wybieranie zdjecia poprzez upload file*/ 
 
-  async function handleChange(e) {
+  async function handleUpload(e) {
 
     let file = e.target.files[0]
 
@@ -50,7 +52,46 @@ function App() {
         setFileUrl(urlPath.publicUrl)
   }
 
-    console.log(fileUrl)
+  }
+
+  async function handleUpload2(e) {
+
+    let file = e.target.files[0]
+
+    let {data,error} = await supabase
+    .storage
+    .from('images')
+    .upload(uuidv4()+ file.name , file)
+    
+
+     const { data:urlPath} = await supabase.storage
+         .from('images')
+         .getPublicUrl(data.path);
+      if (urlPath){
+        console.log(urlPath.publicUrl);
+        setFileUrl2(urlPath.publicUrl)
+  }
+
+  }
+
+  async function handleUpload3(e) {
+
+    let file = e.target.files[0]
+
+    let {data,error} = await supabase
+    .storage
+    .from('images')
+    .upload(uuidv4()+ file.name , file)
+    
+
+     const { data:urlPath} = await supabase.storage
+         .from('images')
+         .getPublicUrl(data.path);
+      if (urlPath){
+        console.log(urlPath.publicUrl);
+        setFileUrl3(urlPath.publicUrl)
+  }
+
   }
 
   
@@ -65,7 +106,9 @@ function App() {
       data:dataWydarzenia,
       wydarzenie:nazwaWydarzenia,
       opisWydarzenia:opisWydarzenia,
-      img:fileUrl
+      img:fileUrl,
+      img2:fileUrl2,
+      img3:fileUrl3
 });
 
 if(err){
@@ -94,35 +137,6 @@ if(err){
     setDane(data)
 
     console.log(dane)
-
-    // const {data,err} = await supabase
-    // .storage
-    // .from('images')
-    // .list('', {
-    //   limit:100,
-    //   offset:1,
-    //   sortBy: { column: 'name', order: 'asc' },
-    // })
-
-    // const fileUrl = data.map( item => ({
-    //   name:item.name,
-    //   data:dataWydarzenia,
-    //   nazwaWydarzenia:nazwaWydarzenia,
-    //   opisWydarzenia:opisWydarzenia,
-    //   url:supabase.storage.from('images').getPublicUrl(item.name).data.publicUrl
-    // }))
-
-    // console.log(fileUrl)
-
-    // if(err){
-    //   console.log(err)
-    // }else{
-    //   setImages(fileUrl)
-    //   setLoad(true)
-    // }
-
-    
-
     
   }
 
@@ -147,7 +161,9 @@ if(err){
     <div className="App">
 
 
-    <input type="file" placeholder='add image' onChange={ (e) => handleChange(e)}></input>
+    <input type="file" placeholder='add image' onChange={ (e) => handleUpload(e)}></input>
+    <input type="file" placeholder='add image' onChange={ (e) => handleUpload2(e)}></input>
+    <input type="file" placeholder='add image' onChange={ (e) => handleUpload3(e)}></input>
 
     <label>Data</label>
     <input type="date" onChange={ (e) =>setData(e.target.value)}></input>
@@ -170,6 +186,8 @@ if(err){
           <h1>{item.id}{item.wydarzenie}</h1>
           <h2>{item.opisWydarzenia}</h2>
           <img className='img' src={item.img} alt={index}></img>
+          <img className='img' src={item.img2} alt={index}></img>
+          <img className='img' src={item.img3} alt={index}></img>
           <button onClick={ (e) =>deleteFile(item)}>Delete</button>
         </div>
       )

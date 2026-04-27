@@ -24,8 +24,6 @@ function App() {
 
   useEffect( () =>{
 
- 
-
 
     },[])
 
@@ -97,6 +95,7 @@ function App() {
   
 
   /*wysyłanie pliku do supabase*/ 
+
   async function uploadFile() {
     
 
@@ -116,9 +115,6 @@ if(err){
   else{
     alert('dodano wydarzenie do bazy danych')
   }
-    
-    
-     
 
   }
 
@@ -137,7 +133,7 @@ if(err){
     setDane(data)
 
     console.log(dane)
-    
+
   }
 
   /*usuwanie wybranego elementu na podstawie id */

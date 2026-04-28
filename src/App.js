@@ -201,11 +201,7 @@ if(err){
 
   
 
-     {/* <Title></Title> */}
-     {/* <UploadForm></UploadForm> */}
-     {/* <ImageGrid setSelected={setSelected}></ImageGrid> */}
-    
-     {/* {selected && <Modal selected={selected} setSelected={setSelected}></Modal>} */}
+   
     </div>
   );
 }

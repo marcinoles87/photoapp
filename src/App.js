@@ -24,6 +24,11 @@ function App() {
 
   useEffect( () =>{
 
+    const { data, error } =  supabase
+    .from('przedszkole111wydarzenia')
+    .select('*')
+    .order('data', { ascending: false })
+
 
     },[])
 

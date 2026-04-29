@@ -25,7 +25,7 @@ function App() {
   useEffect( () =>{
 
     const { data, error } =  supabase
-    .from('przedszkole111wydarzenia')
+    .from('grupa1')
     .select('*')
     .order('data', { ascending: false })
 
@@ -105,7 +105,7 @@ function App() {
     
 
     let { dat, err } = await supabase
-    .from('przedszkole111wydarzenia')
+    .from('grupa1')
     .insert({
       data:dataWydarzenia,
       wydarzenie:nazwaWydarzenia,
@@ -127,7 +127,7 @@ if(err){
   async function handleShowAll(e){
 
     const { data, error } = await supabase
-    .from('przedszkole111wydarzenia')
+    .from('grupa1')
     .select('*')
     .order('data', { ascending: false })
 

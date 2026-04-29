@@ -148,7 +148,7 @@ if(err){
    console.log(item)
 
     const {data,error} = await supabase
-    .from('przedszkole111wydarzenia')
+    .from('grupa1')
     .delete()
     .eq('id',item.id)
 

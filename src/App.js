@@ -20,7 +20,7 @@ function App() {
   const [opisWydarzenia,setOpis] = useState('')
   const [dane,setDane] = useState([])
 
-  const [password , setPassword] = ('')
+  const [password , setPassword] = useState(false)
 
 
 
@@ -158,8 +158,10 @@ if(err){
   }
 
   const handlePassword = (e) =>{
-    e.preventDefault()
-    
+
+    if(e === 'monika'){
+      setPassword(true)
+    }
 
 
   }
@@ -170,7 +172,12 @@ if(err){
   return (
     <div className="App">
 
-    <input type="text" placeholder='admin' onChange={ (e) => handlePassword(e)}></input>
+    <input type="text" placeholder='admin' onChange={ (e) => handlePassword(e.target.value)}></input>
+
+    {password ?
+
+    <>
+
     <input type="file" placeholder='add image' onChange={ (e) => handleUpload(e)}></input>
     <input type="file" placeholder='add image' onChange={ (e) => handleUpload2(e)}></input>
     <input type="file" placeholder='add image' onChange={ (e) => handleUpload3(e)}></input>
@@ -186,6 +193,11 @@ if(err){
     <input type="text" onChange={(e) =>setOpis(e.target.value)}></input>
 
     <button onClick={uploadFile}>Wyślij</button>
+
+    </>
+    
+    : ''}
+    
 
     <button onClick={handleShowAll}>Pokaz wszystkie zdjecia</button>
 

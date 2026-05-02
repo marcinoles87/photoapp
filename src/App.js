@@ -20,6 +20,9 @@ function App() {
   const [opisWydarzenia,setOpis] = useState('')
   const [dane,setDane] = useState([])
 
+  const [password , setPassword] = ('')
+
+
 
   useEffect( () =>{
 
@@ -154,13 +157,20 @@ if(err){
 
   }
 
+  const handlePassword = (e) =>{
+    e.preventDefault()
+    
+
+
+  }
+
 
 
 
   return (
     <div className="App">
 
-
+    <input type="text" placeholder='admin' onChange={ (e) => handlePassword(e)}></input>
     <input type="file" placeholder='add image' onChange={ (e) => handleUpload(e)}></input>
     <input type="file" placeholder='add image' onChange={ (e) => handleUpload2(e)}></input>
     <input type="file" placeholder='add image' onChange={ (e) => handleUpload3(e)}></input>
@@ -183,12 +193,24 @@ if(err){
     {dane ? dane.map( (item,index) => {
       return(
         <div key={index} className='img-group'>
-          <h1>{item.id}.{item.wydarzenie}</h1>
+          <div className='img-info'>
+            <h1>{item.wydarzenie}</h1>
           <h2>{item.opisWydarzenia}</h2>
-          <img className='img' src={item.img} alt={index}></img>
+          </div>
+          
+          <div className='img-images'>
+             <img className='img' src={item.img} alt={index}></img>
           <img className='img' src={item.img2} alt={index}></img>
           <img className='img' src={item.img3} alt={index}></img>
-          <button onClick={ (e) =>deleteFile(item)}>Delete</button>
+          </div>
+         
+         {password ?
+
+         <button onClick={ (e) =>deleteFile(item)}>Delete</button>
+         : ''
+         
+        }
+          
         </div>
       )
     })

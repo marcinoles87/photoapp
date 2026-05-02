@@ -34,5 +34,16 @@ button{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 10px;
     
+}
+
+.img-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.img-images{
+    display: flex;
+    flex-direction: row;
 }

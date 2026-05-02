@@ -184,7 +184,8 @@ if(err){
     {dane ? dane.map( (item,index) => {
       return(
         <div key={index} className='img-group'>
-          <h1>{item.id}{item.wydarzenie}</h1>
+          <h1>{item.id}.{item.wydarzenie}</h1>
+          <p>{item.data}</p>
           <h2>{item.opisWydarzenia}</h2>
           <img className='img' src={item.img} alt={index}></img>
           <img className='img' src={item.img2} alt={index}></img>

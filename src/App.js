@@ -20,7 +20,8 @@ function App() {
   const [opisWydarzenia,setOpis] = useState('')
   const [dane,setDane] = useState([])
 
-  const [password , setPassword] = useState(false)
+  const [password , setPassword] = useState('')
+  const [loadAdmin , setLoadadmin] = useState(false)
 
 
 
@@ -154,13 +155,17 @@ if(err){
     .delete()
     .eq('id',item.id)
 
+    alert('usunięto wydarzenie ' + item.wydarzenie)
+
 
   }
 
   const handlePassword = (e) =>{
 
-    if(e === 'monika'){
-      setPassword(true)
+    if(password ==='monika'){
+      setLoadadmin(true)
+    }else{
+      setLoadadmin(false)
     }
 
 
@@ -172,9 +177,9 @@ if(err){
   return (
     <div className="App">
 
-    <input type="text" placeholder='admin' onChange={ (e) => handlePassword(e.target.value)}></input>
+    <input type="text" placeholder='admin' onChange={ (e) => setPassword(e.target.value)}></input><button onClick={handlePassword}>V</button>
 
-    {password ?
+    {loadAdmin ?
 
     <>
 
@@ -216,7 +221,7 @@ if(err){
           <img className='img' src={item.img3} alt={index}></img>
           </div>
          
-         {password ?
+         {loadAdmin ?
 
          <button onClick={ (e) =>deleteFile(item)}>Delete</button>
          : ''

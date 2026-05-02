@@ -20,7 +20,6 @@ function App() {
   const [opisWydarzenia,setOpis] = useState('')
   const [dane,setDane] = useState([])
 
-  const [load , setLoad] = useState(false)
 
   useEffect( () =>{
 
@@ -185,7 +184,6 @@ if(err){
       return(
         <div key={index} className='img-group'>
           <h1>{item.id}.{item.wydarzenie}</h1>
-          <p>{item.data}</p>
           <h2>{item.opisWydarzenia}</h2>
           <img className='img' src={item.img} alt={index}></img>
           <img className='img' src={item.img2} alt={index}></img>
